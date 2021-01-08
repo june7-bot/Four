@@ -10,8 +10,9 @@ class Buyer extends Model
     public function buy($count)
     {
         $sum = 500 * $count;
+        $bc = $this->money;
         $this->update([
-            'money' => $sum
+            'money' => $bc-$sum
         ]);
     }
 }

@@ -21,6 +21,6 @@ class UserBuyTest extends TestCase
 
         $buyer->buy(1);
 
-        $this->assertEquals($buyer->money-500, $buyer->money);
+        $this->assertEquals(9500, $buyer->money);
     }
 }
