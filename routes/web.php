@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::view('test', 'buyLottery');
+Route::get('insertNumber' , function () {
+    return view('insertNumber');
+});
+
+Route::post('result', 'LotteryController@result');

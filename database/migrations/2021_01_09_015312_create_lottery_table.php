@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
-class CreateBuyersTable extends Migration
+class CreateLotteryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +13,11 @@ class CreateBuyersTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyers', function (Blueprint $table) {
+        Schema::create('lottery', function (Blueprint $table) {
             $table->id();
-            $table->String('name')->unique();
-            $table->unsignedInteger('money');
+            $table->foreignId('buyer_id')->constrained()->cascadeOnDelete();
+            $table->unsignedInteger('round');
+            $table->unsignedInteger('winningNumber')->default(rand(1000,9999));
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateBuyersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyers');
+        Schema::dropIfExists('lottery');
     }
 }
